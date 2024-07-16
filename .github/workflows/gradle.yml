@@ -52,6 +52,16 @@ jobs:
         source: "./build/libs/*.war"
         target: "/home/ubuntu/deploy"
         strip_components: 2
+    - name: Execute deploy script
+      uses: appleboy/ssh-action@master
+      with:
+        username: ${{ secrets.SERVER_USERNAME }}
+        host: ${{ secrets.SERVER_HOST }}
+        key: ${{ secrets.SERVER_KEY }}
+        script_stop: true
+        script: |
+          chmod +x /home/ubuntu/deploy/deploy.sh
+          sh /home/ubuntu/deploy/deploy.sh
 
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
