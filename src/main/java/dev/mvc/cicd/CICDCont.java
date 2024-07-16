@@ -32,6 +32,7 @@ public class CICDCont {
     }
     else if (sw == 2) {
         msg = "/cide workflow 테스트";
+        System.out.println("테스트중");
         log.info(msg);
       }
     return "<h3>" + msg + "</h3>";
